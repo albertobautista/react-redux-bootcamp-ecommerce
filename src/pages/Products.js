@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import ProductList from "../components/ProductList";
 
 export const Products = () => {
   return (
-    <div>Products</div>
-  )
-}
+    <div className="mt-5">
+      <ProductList />
+    </div>
+  );
+};
