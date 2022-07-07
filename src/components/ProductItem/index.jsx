@@ -9,7 +9,7 @@ const ProductItem = ({ product }) => {
     <div className="card product-box">
       <div
         style={{
-          minHeight: "230px",
+          margin: 5,
           maxHeight: "230px",
         }}
       >
@@ -17,16 +17,22 @@ const ProductItem = ({ product }) => {
           src={images[0]}
           className="card-img-top"
           alt={name}
-          style={{ width: "100%", height: "15vw", objectFit: "contain" }}
+          style={{
+            width: "100%",
+            height: "15vw",
+            objectFit: "contain",
+            maxHeight: "100%",
+          }}
         />
       </div>
       <div className="card-body">
-        <h5 className="card-title fw-bold" style={{ minHeight: "80px" }}>
-          {name.substring(0, 80) + "..."}
+        <h5
+          className="card-title fw-bold truncate-text"
+          style={{ minHeight: "100px" }}
+        >
+          {name}
         </h5>
-        <p className="card-text fst-italic">
-          {description.substring(0, 90) + "..."}
-        </p>
+        <p className="card-text fst-italic truncate-text">{description}</p>
         <p>
           <b>Category: </b>
           {categories[0]}
@@ -41,22 +47,6 @@ const ProductItem = ({ product }) => {
         </div>
       </div>
     </div>
-    // <div className="ibox">
-    //   <div className="ibox-content product-box">
-    //     <div className="product-imitation">
-    //       <img src={images[0]} alt={name} style={{ width: "100%" }} />
-    //     </div>
-    //     <div className="product-desc">
-    //       <span className="product-price">{currencyFormat(price)} </span>
-    //       <h1 className="product-name">{name}</h1>
-
-    //       <div className="small m-t-xs">{description} </div>
-    //       <div className="mt-5 text-right" align="center">
-    //         <button className="btn btn-primary">Add to cart</button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
