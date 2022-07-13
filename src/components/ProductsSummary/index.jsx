@@ -8,7 +8,7 @@ export const ProductsSummary = ({ cartTotalPrice, cartItemsQuantity }) => {
       <div className="card-body">
         <dl className="dlist-align ">
           <dd className="text-right text-dark b ml-3">
-            <strong>{cartItemsQuantity}</strong> producto
+            <strong>{cartItemsQuantity}</strong> product
             {cartItemsQuantity > 1 ? "s" : ""}
           </dd>
         </dl>
@@ -25,19 +25,19 @@ export const ProductsSummary = ({ cartTotalPrice, cartItemsQuantity }) => {
             to="/checkout"
             className="btn btn-out btn-success btn-square btn-main"
           >
-            Terminar Compra
+            Checkout
           </Link>
           <button
             onClick={() => {}}
             className="btn btn-out btn-danger btn-square btn-main mt-2"
           >
-            Limpiar carrito
+            Clean cart
           </button>
           <Link
             to="/products"
             className="btn btn-out btn-secondary btn-square btn-main mt-2"
           >
-            Continuar comprando
+            Continue shopping
           </Link>
         </>
       </div>

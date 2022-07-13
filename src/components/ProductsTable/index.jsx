@@ -9,9 +9,9 @@ const ProductsTable = ({ cartItems }) => {
           <thead className="text-muted">
             <tr className="small text-uppercase">
               <th scope="col"></th>
-              <th scope="col">Producto</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Precio</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
               <th scope="col">Subtotal</th>
               <th scope="col" className="text-right d-none d-md-block"></th>
             </tr>

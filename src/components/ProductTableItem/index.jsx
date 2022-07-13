@@ -60,7 +60,7 @@ const ProductTableItem = ({ cartItem }) => {
       </td>
       <td>
         <button onClick={() => {}} className="btn btn-light">
-          Eliminar
+          Delete
         </button>
       </td>
     </tr>
