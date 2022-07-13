@@ -1,11 +1,17 @@
-import GlobalStyle from './styles/globalStyles';
-import {AppRouter} from './routes/AppRouter';
+import GlobalStyle from "./styles/globalStyles";
+import { AppRouter } from "./routes/AppRouter";
+import CartContextProvider from "./contexts/CartContext";
+import AuthContextProvider from "./contexts/AuthContext";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <AppRouter />
+      <AuthContextProvider>
+        <CartContextProvider>
+          <GlobalStyle />
+          <AppRouter />
+        </CartContextProvider>
+      </AuthContextProvider>
     </>
   );
 }

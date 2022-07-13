@@ -1,28 +1,44 @@
-import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {Products} from '../pages/Products';
-import {Cart} from '../pages/Cart';
-import {Home} from '../pages/Home';
-import {Header} from '../components/Header';
-import { Login } from '../pages/Login';
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { Products } from "../pages/Products";
+import { CartPage } from "../pages/Cart";
+import { Home } from "../pages/Home";
+import { Header } from "../components/Header";
+import { Login } from "../pages/Login";
+import { AuthContext } from "../contexts/AuthContext";
+import PrivateRoute from "../components/Routes/PrivateRoute";
+import PublicRoute from "../components/Routes/PublicRoute";
 
 export const AppRouter = () => {
+  const { isAuth } = useContext(AuthContext);
   return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/products'>
-          <Products />
-        </Route>
-        <Route path='/cart'>
-          <Cart />
-        </Route>
-        <Route path='/login'>
-          <Login />
-        </Route>
+        <PublicRoute
+          exact
+          path="/login"
+          isAuthenticated={isAuth}
+          component={Login}
+        />
+        <PrivateRoute
+          exact
+          path="/cart"
+          isAuthenticated={isAuth}
+          component={CartPage}
+        />
+        <PrivateRoute
+          exact
+          path="/products"
+          isAuthenticated={isAuth}
+          component={Products}
+        />
+        <PrivateRoute
+          exact
+          path="/"
+          isAuthenticated={isAuth}
+          component={Home}
+        />
       </Switch>
     </Router>
   );
