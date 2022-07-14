@@ -15,10 +15,7 @@ const ProductList = () => {
   const isLoading = useSelector(isLoadingProducts);
   const error = useSelector(productsError);
 
-  console.log("PRODUCTOS", products);
-
   useEffect(() => {
-    console.log("[][][][[][][]");
     dispatch(fetchProducts());
   }, []);
 
