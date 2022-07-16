@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { sendOrder } from "./thunks";
 
 const initialState = {
-  isLoading: false,
+  orderLoading: false,
   error: {},
   cartItems: [],
+  orderMessage: {},
 };
 
 const cartSlice = createSlice({
@@ -50,7 +52,22 @@ const cartSlice = createSlice({
       state.cartItems = [];
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(sendOrder.pending, (state) => {
+        state.orderLoading = true;
+      })
+      .addCase(sendOrder.fulfilled, (state, action) => {
+        state.orderLoading = false;
+        state.orderMessage = action.payload;
+        state.error = {};
+        state.cartItems = [];
+      })
+      .addCase(sendOrder.rejected, (state, action) => {
+        state.orderLoading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { addToCart, deleteCartItem, updateCartItemQuantity, cleanCart } =

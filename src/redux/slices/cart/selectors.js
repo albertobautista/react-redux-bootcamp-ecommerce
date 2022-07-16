@@ -1,4 +1,4 @@
-const { createSelector } = require("@reduxjs/toolkit");
+import { createSelector } from "@reduxjs/toolkit";
 
 export const cart = (state) => state.cart.cartItems;
 
@@ -12,3 +12,6 @@ export const cartTotalPriceSelector = createSelector([cart], (cart) =>
     0
   )
 );
+
+export const orderMessage = (state) => state.cart.orderMessage;
+export const orderLoading = (state) => state.cart.orderLoading;
