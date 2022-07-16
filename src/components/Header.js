@@ -6,6 +6,7 @@ import {
   Bar,
   Links,
   FlexContainer,
+  Button,
 } from "../styles/components/Header.styles.js";
 
 export const Header = () => {
@@ -16,12 +17,10 @@ export const Header = () => {
     <Bar className="topnav" id="myTopnav">
       <Links to="/">Wizestore</Links>
       <FlexContainer>
+        <Links to="/products">Products</Links>
         <Links to="/cart">Cart</Links>
-        <Links to="/products" onCL>
-          Products
-        </Links>
         {isAuth ? (
-          <Links onClick={() => dispatch(logout())}>Logout</Links>
+          <Button onClick={() => dispatch(logout())}>Logout</Button>
         ) : (
           <Links to="/login">Login</Links>
         )}
