@@ -1,20 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { currencyFormat } from "../../utils/currency";
 import {
   cartTotalPriceSelector,
   cartTotalSelector,
 } from "../../redux/slices/cart/selectors";
 import { cleanCart } from "../../redux/slices/cart/cartSlice";
+import { sendOrder } from "../../redux/slices/cart/thunks";
 
-export const ProductsSummary = ({ cartTotalPrice, cartItemsQuantity }) => {
+export const ProductsSummary = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const total = useSelector(cartTotalSelector);
   const totalPrice = useSelector(cartTotalPriceSelector);
-  const dispatch = useDispatch();
 
   const handleCleanCart = () => {
     dispatch(cleanCart());
+  };
+
+  const handleSendOrder = () => {
+    dispatch(sendOrder());
+    history.push("/order");
   };
 
   return (
@@ -35,12 +44,12 @@ export const ProductsSummary = ({ cartTotalPrice, cartItemsQuantity }) => {
 
         <>
           <hr />
-          <Link
-            to="/checkout"
+          <button
+            onClick={handleSendOrder}
             className="btn btn-out btn-success btn-square btn-main"
           >
             Checkout
-          </Link>
+          </button>
           <button
             onClick={handleCleanCart}
             className="btn btn-out btn-danger btn-square btn-main mt-2"
