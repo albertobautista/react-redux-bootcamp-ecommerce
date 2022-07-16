@@ -25,14 +25,13 @@ const authSlice = createSlice({
 const { userLogin, userLogout } = authSlice.actions;
 
 export const login = (username, password) => async (dispatch) => {
-  loginApi(username, password)
-    .then((resp) => {
-      localStorage.setItem("isAuth", true);
-      dispatch(userLogin());
-    })
-    .catch((error) => {
-      alert("Credenciales Incorrectas");
-    });
+  try {
+    await loginApi(username, password);
+    dispatch(userLogin());
+    localStorage.setItem("isAuth", true);
+  } catch (error) {
+    alert("Credenciales Incorrectas");
+  }
 };
 
 export const logout = () => async (dispatch) => {
