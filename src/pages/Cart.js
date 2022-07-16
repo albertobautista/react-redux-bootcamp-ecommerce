@@ -1,7 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import Cart from "../components/Cart";
 import NoData from "../components/NoData";
-import { useSelector } from "react-redux";
 import { cart } from "../redux/slices/cart/selectors";
 
 export const CartPage = () => {
@@ -11,7 +12,7 @@ export const CartPage = () => {
       {cartItems.length > 0 ? (
         <Cart cartItems={cartItems} />
       ) : (
-        <NoData message="Carrito vacío" />
+        <NoData message="Empty cart" />
       )}
     </div>
   );

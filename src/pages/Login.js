@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { login } from "../redux/slices/auth/authSlice";
 import { useDispatch } from "react-redux";
+
+import { login } from "../redux/slices/auth/authSlice";
 
 import {
   Button,

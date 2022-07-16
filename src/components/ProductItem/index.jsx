@@ -1,9 +1,10 @@
 import React from "react";
-import { currencyFormat } from "../../utils/currency";
 import { useDispatch } from "react-redux";
 
-import "./styles.css";
+import { currencyFormat } from "../../utils/currency";
 import { addToCart } from "../../redux/slices/cart/cartSlice";
+
+import "./styles.css";
 
 const ProductItem = ({ product }) => {
   const { id, name, images, description, price, categories } = product;
@@ -11,6 +12,7 @@ const ProductItem = ({ product }) => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+    alert("Added to cart");
   };
   return (
     <div className="card product-box">

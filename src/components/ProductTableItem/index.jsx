@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { currencyFormat } from "../../utils/currency";
 import { useDispatch } from "react-redux";
+
+import { currencyFormat } from "../../utils/currency";
 import {
   deleteCartItem,
   updateCartItemQuantity,
