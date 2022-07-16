@@ -10,7 +10,11 @@ const initialState = {
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanProducts: (state, { payload }) => {
+      state.data = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -27,5 +31,5 @@ const productsSlice = createSlice({
       });
   },
 });
-
+export const { cleanProducts } = productsSlice.actions;
 export default productsSlice;
