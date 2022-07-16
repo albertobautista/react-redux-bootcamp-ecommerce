@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { logout } from "../redux/slices/auth/authSlice.js";
 import { isAuthenticated } from "../redux/slices/auth/selectors.js";
+import { cleanProducts } from "../redux/slices/products/productsSlice.js";
+
 import {
   Bar,
   Links,
@@ -13,6 +16,11 @@ export const Header = () => {
   const isAuth = useSelector(isAuthenticated);
   const dispatch = useDispatch();
 
+  const handleLogout = () => {
+    dispatch(cleanProducts());
+    dispatch(logout());
+  };
+
   return (
     <Bar className="topnav" id="myTopnav">
       <Links to="/">Wizestore</Links>
@@ -20,7 +28,7 @@ export const Header = () => {
         <Links to="/products">Products</Links>
         <Links to="/cart">Cart</Links>
         {isAuth ? (
-          <Button onClick={() => dispatch(logout())}>Logout</Button>
+          <Button onClick={handleLogout}>Logout</Button>
         ) : (
           <Links to="/login">Login</Links>
         )}
