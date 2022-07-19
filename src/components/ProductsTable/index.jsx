@@ -1,6 +1,9 @@
 import React from "react";
+
 import ProductTableItem from "../ProductTableItem";
+
 import "./styles.css";
+
 const ProductsTable = ({ cartItems }) => {
   return (
     <div className="card">

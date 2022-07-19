@@ -1,8 +1,9 @@
 import React from "react";
+
 import { ProductsSummary } from "../ProductsSummary";
 import ProductsTable from "../ProductsTable";
 
-const Cart = ({ cartItems, cartTotalPrice, cartItemsQuantity }) => {
+const Cart = ({ cartItems }) => {
   return (
     <div className="container">
       <div className="row">
@@ -10,10 +11,7 @@ const Cart = ({ cartItems, cartTotalPrice, cartItemsQuantity }) => {
           <ProductsTable cartItems={cartItems} />
         </aside>
         <aside className="col-lg-3">
-          <ProductsSummary
-            cartTotalPrice={cartTotalPrice}
-            cartItemsQuantity={cartItemsQuantity}
-          />
+          <ProductsSummary />
         </aside>
       </div>
     </div>

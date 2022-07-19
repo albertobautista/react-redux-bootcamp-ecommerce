@@ -1,10 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import { currencyFormat } from "../../utils/currency";
+import { addToCart } from "../../redux/slices/cart/cartSlice";
 
 import "./styles.css";
 
 const ProductItem = ({ product }) => {
-  const { name, images, description, price, categories } = product;
+  const { id, name, images, description, price, categories } = product;
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    alert("Added to cart");
+  };
   return (
     <div className="card product-box">
       <div
@@ -36,12 +45,16 @@ const ProductItem = ({ product }) => {
         <p>
           <b>Category: </b>
           {categories[0]}
+          {id}
         </p>
         <div className="text-end mb-3">
           <p className="card-text fs-5">{currencyFormat(price)}</p>
         </div>
         <div className="text-center d-grid gap-2 col-12 mx-auto">
-          <button className="btn btn-outline-primary btn-md">
+          <button
+            className="btn btn-outline-primary btn-md"
+            onClick={() => handleAddToCart(product)}
+          >
             Add to cart
           </button>
         </div>

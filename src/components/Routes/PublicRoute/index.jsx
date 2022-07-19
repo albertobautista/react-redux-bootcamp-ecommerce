@@ -5,7 +5,7 @@ function PublicRoute({ isAuthenticated, component: Component, ...rest }) {
     <Route
       {...rest}
       component={(props) =>
-        isAuthenticated ? <Redirect to="/cart" /> : <Component {...props} />
+        isAuthenticated ? <Redirect to="/products" /> : <Component {...props} />
       }
     />
   );

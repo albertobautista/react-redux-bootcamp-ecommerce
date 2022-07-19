@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { useDispatch } from "react-redux";
+
 import { currencyFormat } from "../../utils/currency";
+import {
+  deleteCartItem,
+  updateCartItemQuantity,
+} from "../../redux/slices/cart/cartSlice";
 
 const ProductTableItem = ({ cartItem }) => {
-  const { updateItem } = useContext(CartContext);
   const [quantity, setQuantity] = useState(cartItem.quantity);
+  const dispatch = useDispatch();
 
   const handleChangeQuantity = (event) => {
     const newQuantity = parseInt(event.target.value);
     if (newQuantity >= 1) {
       setQuantity(newQuantity);
-      updateItem(cartItem.id, newQuantity);
+      dispatch(updateCartItemQuantity({ id: cartItem.id, newQuantity }));
     }
+  };
+
+  const handleDeleteCartItem = (id) => {
+    dispatch(deleteCartItem({ id }));
   };
   return (
     <tr className="align-middle">
@@ -59,7 +67,10 @@ const ProductTableItem = ({ cartItem }) => {
         </div>
       </td>
       <td>
-        <button onClick={() => {}} className="btn btn-light">
+        <button
+          onClick={() => handleDeleteCartItem(cartItem.id)}
+          className="btn btn-light"
+        >
           Delete
         </button>
       </td>
